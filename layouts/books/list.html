@@ -7,16 +7,17 @@
 <section class="book-list">
   {{ range .Pages }}
   {{ if not .Draft }}
+  {{ $page := . }}
   <div class="book-item">
     {{ with .Params.cover }}
     <div class="book-cover-small">
-      {{ with $.Params.link }}
+      {{ with $page.Params.link }}
       <a href="{{ . }}" target="_blank" rel="noopener">
-        <img src="{{ $.Params.cover | relURL }}" alt="{{ $.Title }} cover">
+        <img src="{{ $page.Params.cover | relURL }}" alt="{{ $page.Title }} cover">
       </a>
       {{ else }}
-      <a href="{{ $.RelPermalink }}">
-        <img src="{{ . | relURL }}" alt="{{ $.Title }} cover">
+      <a href="{{ $page.RelPermalink }}">
+        <img src="{{ $page.Params.cover | relURL }}" alt="{{ $page.Title }} cover">
       </a>
       {{ end }}
     </div>
