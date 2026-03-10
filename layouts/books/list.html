@@ -8,16 +8,17 @@
   {{ range .Pages }}
   {{ if not .Draft }}
   {{ $page := . }}
+  {{ $cover := .Params.cover | strings.TrimPrefix "/" }}
   <div class="book-item">
     {{ with .Params.cover }}
     <div class="book-cover-small">
       {{ with $page.Params.link }}
       <a href="{{ . }}" target="_blank" rel="noopener">
-        <img src="{{ $page.Params.cover | relURL }}" alt="{{ $page.Title }} cover">
+        <img src="{{ $cover | relURL }}" alt="{{ $page.Title }} cover">
       </a>
       {{ else }}
       <a href="{{ $page.RelPermalink }}">
-        <img src="{{ $page.Params.cover | relURL }}" alt="{{ $page.Title }} cover">
+        <img src="{{ $cover | relURL }}" alt="{{ $page.Title }} cover">
       </a>
       {{ end }}
     </div>
