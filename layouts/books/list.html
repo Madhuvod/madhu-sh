@@ -1,0 +1,32 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="muted">{{ . }}</p>{{ end }}
+</section>
+
+<section class="book-list">
+  {{ range .Pages }}
+  {{ if not .Draft }}
+  <div class="book-item">
+    {{ with .Params.cover }}
+    <div class="book-cover-small">
+      {{ with $.Params.link }}
+      <a href="{{ . }}" target="_blank" rel="noopener">
+        <img src="{{ $.Params.cover }}" alt="{{ $.Title }} cover">
+      </a>
+      {{ else }}
+      <a href="{{ $.RelPermalink }}">
+        <img src="{{ . }}" alt="{{ $.Title }} cover">
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+    <div class="book-info">
+      <a href="{{ .RelPermalink }}" class="book-title">{{ .Title }}</a>
+      {{ with .Params.status }}<span class="book-status">{{ . }}</span>{{ end }}
+    </div>
+  </div>
+  {{ end }}
+  {{ end }}
+</section>
+{{ end }}

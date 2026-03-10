@@ -1,0 +1,28 @@
+baseURL = "https://madhushantan.github.io/"
+languageCode = "en-us"
+title = "madhu.sh"
+paginate = 10
+
+[params]
+  tagline = "applied curiosity"
+  description = "Madhu Shantan — Applied AI Engineer"
+  author = "Madhu Shantan"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[menu]
+  [[menu.main]]
+    name = "blog"
+    url = "/blog/"
+    weight = 1
+  [[menu.main]]
+    name = "books"
+    url = "/books/"
+    weight = 2
+  [[menu.main]]
+    name = "about"
+    url = "/about/"
+    weight = 3

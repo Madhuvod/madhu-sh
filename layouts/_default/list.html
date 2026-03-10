@@ -1,0 +1,18 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="muted">{{ . }}</p>{{ end }}
+</section>
+
+<section class="post-list">
+  {{ range .Pages }}
+  {{ if not .Draft }}
+  <div class="post-preview">
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <span class="post-date">{{ .Date.Format "Jan 2, 2006" }}</span>
+    {{ with .Description }}<p class="post-excerpt">{{ . }}</p>{{ end }}
+  </div>
+  {{ end }}
+  {{ end }}
+</section>
+{{ end }}
